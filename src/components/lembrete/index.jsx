@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { AppConteiner, CardLembrete, FormConteiner, Input, TituloForm } from './EstiloLembrete';
+
 
 function Lembrete (){
     
@@ -21,6 +23,8 @@ function Lembrete (){
             
             //salvar na lista de lembrete -> setListaLembrete(objeto)
             setListaLembrete([...listaLembrete, lembrete]);
+            setNomeLembrete("");
+            setDataLembrete("");
         }else{
             alert("Os campos devem estar preenchidos!");
         }
@@ -48,31 +52,34 @@ function Lembrete (){
     }
 
     return (
-       <div>
-        <h3>Novo Lembrete</h3>
+       <AppConteiner>
+        <TituloForm>Novo Lembrete</TituloForm>
         <form onSubmit={Submeter}>
-            <div>
-                <input type="text" placeholder="Nome do lembrete" onChange={AlterarTexto} value={nomeLembrete}/>
+            <FormConteiner>
+                <Input type="text" placeholder="Nome do lembrete" onChange={AlterarTexto} value={nomeLembrete}/>
                 
-                <input type="text" placeholder='Data do lembrete (no formato dd/mm/yyyy)' onChange={DataLembrete} value={dataLembrete}/>
+                <Input type="text" placeholder='Data do lembrete (no formato dd/mm/yyyy)' onChange={DataLembrete} value={dataLembrete}/>
                 
                 <div>
-                    <button onClick={Add}>Criar Lembrete</button>
+                    <button onClick={Add}>Adicionar</button>
                 </div>
                 <div>
                     {/* map para cada item do array tem uma ação */}
                     {listaLembrete.map((item)=>{
                         return(
-                            <div key={item.id}>
-                                <p>{item.nome+"-"+ item.data}</p>
+                            <CardLembrete key={item.id}>
+                                <div>
+                                <p>{item.data}</p>
+                                <p>{item.nome}</p>
+                                </div>
                                 <button onClick={()=>Deletar(item.id)}>X</button>
-                            </div>
+                            </CardLembrete>
                         )
                     })}
                 </div>
-            </div>
+            </FormConteiner>
         </form>
-       </div>
+       </AppConteiner>
     )
 }
 
