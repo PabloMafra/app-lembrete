@@ -1,5 +1,5 @@
 import './App.css';
-import Lembrete from './components/Lembrete';
+import Lembrete from './components/lembrete/index.jsx';
 
 
 function App() {

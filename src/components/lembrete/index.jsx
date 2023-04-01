@@ -1,4 +1,3 @@
-    import react from 'react';
 import { useState } from 'react';
 
 function Lembrete (){
@@ -14,13 +13,26 @@ function Lembrete (){
 
         /*pegar os dados que estão em nomeLembrete e dataLembrete
         criar um objeto com eles {nomeLembrete, dataLembrete} "lembrete"*/
-        const lembrete = {
-            nome: nomeLembrete, data: dataLembrete
+        if(nomeLembrete.length>0 && dataLembrete.length>0){
+            const numeroId = Math.random();
+            const lembrete = {
+                nome: nomeLembrete, data: dataLembrete, id: numeroId
+            }
+            
+            //salvar na lista de lembrete -> setListaLembrete(objeto)
+            setListaLembrete([...listaLembrete, lembrete]);
+        }else{
+            alert("Os campos devem estar preenchidos!");
         }
         
-        //salvar na lista de lembrete -> setListaLembrete(objeto)
-        setListaLembrete([...listaLembrete, lembrete]);
         
+    }
+
+    function Deletar(id){
+        const listaFiltrada = listaLembrete.filter((item)=> item.id !== id);
+
+        //filtra a lista retirando o item pelo index
+        setListaLembrete(listaFiltrada);
     }
 
     function AlterarTexto(e){
@@ -31,10 +43,14 @@ function Lembrete (){
         setDataLembrete(e.target.value);
     }
 
+    function Submeter(e){
+        e.preventDefault();
+    }
+
     return (
        <div>
         <h3>Novo Lembrete</h3>
-        <form>
+        <form onSubmit={Submeter}>
             <div>
                 <input type="text" placeholder="Nome do lembrete" onChange={AlterarTexto} value={nomeLembrete}/>
                 
@@ -46,7 +62,12 @@ function Lembrete (){
                 <div>
                     {/* map para cada item do array tem uma ação */}
                     {listaLembrete.map((item)=>{
-                        
+                        return(
+                            <div key={item.id}>
+                                <p>{item.nome+"-"+ item.data}</p>
+                                <button onClick={()=>Deletar(item.id)}>X</button>
+                            </div>
+                        )
                     })}
                 </div>
             </div>
