@@ -27,9 +27,7 @@ function Lembrete (){
             setDataLembrete("");
         }else{
             alert("Os campos devem estar preenchidos!");
-        }
-        
-        
+        }        
     }
 
     function Deletar(id){
@@ -43,23 +41,21 @@ function Lembrete (){
         setNomeLembrete(e.target.value); // altera o vlaor do nomeLembrete com o value que está no input
     }
 
-    function DataLembrete(e){
+    function AlterarData(e){
         setDataLembrete(e.target.value);
     }
 
-    function Submeter(e){
+    function SubmeterForm(e){
         e.preventDefault();
     }
 
     return (
        <AppConteiner>
         <TituloForm>Novo Lembrete</TituloForm>
-        <FormConteiner onSubmit={Submeter}>
+        <FormConteiner onSubmit={SubmeterForm}>
             <FormConteudo>
                 <Input type="text" placeholder="Nome do lembrete" onChange={AlterarTexto} value={nomeLembrete}/>
-                
-                <Input type="text" placeholder='Data do lembrete (no formato dd/mm/yyyy)' onChange={DataLembrete} value={dataLembrete}/>
-                
+                <Input type="date" placeholder='Data do lembrete (no formato dd/mm/yyyy)' onChange={AlterarData} value={dataLembrete}/>                
                 <div>
                     <BotaoAdd onClick={Add}>Adicionar</BotaoAdd>
                 </div>
@@ -69,15 +65,16 @@ function Lembrete (){
                 <CardConteiner>
                     {/* map para cada item do array tem uma ação */}
                     {listaLembrete.map((item)=>{
+                        var dataPtBr = new Date(item.data).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
+
                         return(
                             <CardLembrete key={item.id}>
                                 <TextoLembrete>
-                                <p>{item.data}</p>
+                                <p>{dataPtBr}</p>
                                 <p>{item.nome}</p>
                                 </TextoLembrete>
                                 <BotaoDeletar onClick={()=>Deletar(item.id)}>X</BotaoDeletar>
-                            </CardLembrete>
-                        )
+                            </CardLembrete>)
                     })}
                 </CardConteiner>
             </FormConteudo>
