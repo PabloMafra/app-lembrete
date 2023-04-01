@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  background: radial-gradient(circle, rgba(163,0,255,0.4759725400457666) 0%, rgba(103,0,55,0.6178489702517163) 51%, rgba(30,0,161,0.437070938215103) 100%);
 }
 ol, ul {
 	list-style: none;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AppConteiner, CardLembrete, FormConteiner, Input, TituloForm } from './EstiloLembrete';
+import { AppConteiner, BotaoAdd, BotaoDeletar, CardConteiner, CardLembrete, FormConteiner, FormConteudo, Input, TituloForm } from './EstiloLembrete';
 
 
 function Lembrete (){
@@ -54,16 +54,19 @@ function Lembrete (){
     return (
        <AppConteiner>
         <TituloForm>Novo Lembrete</TituloForm>
-        <form onSubmit={Submeter}>
-            <FormConteiner>
+        <FormConteiner onSubmit={Submeter}>
+            <FormConteudo>
                 <Input type="text" placeholder="Nome do lembrete" onChange={AlterarTexto} value={nomeLembrete}/>
                 
                 <Input type="text" placeholder='Data do lembrete (no formato dd/mm/yyyy)' onChange={DataLembrete} value={dataLembrete}/>
                 
                 <div>
-                    <button onClick={Add}>Adicionar</button>
+                    <BotaoAdd onClick={Add}>Adicionar</BotaoAdd>
                 </div>
                 <div>
+                    <h2>Lista de Lembretes &#x1F4CC;</h2>
+                </div>
+                <CardConteiner>
                     {/* map para cada item do array tem uma ação */}
                     {listaLembrete.map((item)=>{
                         return(
@@ -72,13 +75,13 @@ function Lembrete (){
                                 <p>{item.data}</p>
                                 <p>{item.nome}</p>
                                 </div>
-                                <button onClick={()=>Deletar(item.id)}>X</button>
+                                <BotaoDeletar onClick={()=>Deletar(item.id)}>X</BotaoDeletar>
                             </CardLembrete>
                         )
                     })}
-                </div>
-            </FormConteiner>
-        </form>
+                </CardConteiner>
+            </FormConteudo>
+        </FormConteiner>
        </AppConteiner>
     )
 }
