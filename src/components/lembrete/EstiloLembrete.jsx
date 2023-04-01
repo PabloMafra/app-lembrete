@@ -4,9 +4,8 @@ export const TituloForm = styled.h3`
 padding:15px 0;
 font-size:40px;
 font-weight:bold;
-color: white;
-
-
+color: black;
+font-family: 'Roboto';
 `;
 
 export const FormConteiner =styled.form`
@@ -23,17 +22,19 @@ flex-direction:column;
 
 `;
 export const AppConteiner = styled.div`
-width:100%;
+
 display:flex;
+justify-content:center;
 flex-direction:column;
 align-items:center;
-
+width:100%;
+border
 `;
 
 export const Input =styled.input`
 padding:10px;
-border-radius:5px;
-border:0.1px solid;
+border-radius:8px;
+border:2px solid;
 margin-top:20px;
 
 `
@@ -57,6 +58,18 @@ border-radius: 10px;
 background: linear-gradient(207deg, rgba(0,239,255,0.4759725400457666) 0%, rgba(0,78,103,0.6178489702517163) 51%, rgba(0,52,161,0.437070938215103) 100%);
 margin-bottom:12px;
 padding: 30px 0;
+&:hover{
+ box-shadow: 1px 1px 30px 1px black;
+}
+@media screen and (max-width:550px){
+    width:360px;
+}
+@media screen and (max-width:360px){
+    width:320px;
+}
+
+
+
 `
 export const BotaoAdd =styled.button`
 
@@ -67,12 +80,13 @@ border-style: none;
 border: 0.5px solid black;
 border-radius: 10px;
 background:#3ACB3D;
-color:white;
+color:black;
 font-weight:bold;
 `
 
 export const BotaoDeletar =styled.button`
 padding:4px 8px;
+position:absolute;
 margin-left:50%;
 border-style: none;
 border: 0.5px solid black;
@@ -80,6 +94,28 @@ border-radius: 25px;
 background:red;
 color:black;
 font-weight:bold;
+&:hover{
+    cursor:pointer;
+}
 `
 
-
+export const TextoLembrete =styled.div`
+display:flex;
+flex-direction:column;
+margin-left:15px;
+margin-right:auto;
+color:white;
+font-size:1.5rem;
+font-weight:bold;
+@media screen and (max-width:650px){
+    font-size:16px;
+}
+`
+export const SubTitulo =styled.div`
+margin-top:25px;
+padding:15px 0;
+font-size:27px;
+font-weight:bold;
+color:black;
+font-family: 'Roboto';
+`

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AppConteiner, BotaoAdd, BotaoDeletar, CardConteiner, CardLembrete, FormConteiner, FormConteudo, Input, TituloForm } from './EstiloLembrete';
+import { AppConteiner, BotaoAdd, BotaoDeletar, CardConteiner, CardLembrete, FormConteiner, FormConteudo, Input, SubTitulo, TextoLembrete, TituloForm } from './EstiloLembrete';
 
 
 function Lembrete (){
@@ -63,18 +63,18 @@ function Lembrete (){
                 <div>
                     <BotaoAdd onClick={Add}>Adicionar</BotaoAdd>
                 </div>
-                <div>
+                <SubTitulo>
                     <h2>Lista de Lembretes &#x1F4CC;</h2>
-                </div>
+                </SubTitulo>
                 <CardConteiner>
                     {/* map para cada item do array tem uma ação */}
                     {listaLembrete.map((item)=>{
                         return(
                             <CardLembrete key={item.id}>
-                                <div>
+                                <TextoLembrete>
                                 <p>{item.data}</p>
                                 <p>{item.nome}</p>
-                                </div>
+                                </TextoLembrete>
                                 <BotaoDeletar onClick={()=>Deletar(item.id)}>X</BotaoDeletar>
                             </CardLembrete>
                         )
