@@ -1,4 +1,4 @@
-import react from 'react';
+    import react from 'react';
 import { useState } from 'react';
 
 function Lembrete (){
@@ -11,19 +11,16 @@ function Lembrete (){
 
     function Add (e){
         e.preventDefault(); // não deixa a tela atualizar
-    
+
         /*pegar os dados que estão em nomeLembrete e dataLembrete
         criar um objeto com eles {nomeLembrete, dataLembrete} "lembrete"*/
-        let lembrete = {
+        const lembrete = {
             nome: nomeLembrete, data: dataLembrete
         }
         
         //salvar na lista de lembrete -> setListaLembrete(objeto)
-        let lista = [];
-
-        console.log(lista);
+        setListaLembrete([...listaLembrete, lembrete]);
         
-
     }
 
     function AlterarTexto(e){
@@ -45,6 +42,12 @@ function Lembrete (){
                 
                 <div>
                     <button onClick={Add}>Criar Lembrete</button>
+                </div>
+                <div>
+                    {/* map para cada item do array tem uma ação */}
+                    {listaLembrete.map((item)=>{
+                        
+                    })}
                 </div>
             </div>
         </form>
