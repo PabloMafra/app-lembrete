@@ -7,7 +7,6 @@ justify-content:center;
 flex-direction:column;
 align-items:center;
 width:100%;
-border
 `;
 
 export const TituloForm = styled.h3`
@@ -29,7 +28,6 @@ width:80%;
 export const FormConteudo = styled.div`
 display:flex;
 flex-direction:column;
-
 `;
 
 export const Input =styled.input`
@@ -37,7 +35,6 @@ padding:10px;
 border-radius:8px;
 border:2px solid;
 margin-top:20px;
-
 `
 
 export const BotaoAdd =styled.button`
@@ -65,9 +62,7 @@ font-family: 'Roboto';
 export const CardConteiner =styled.div`
 display:flex;
 flex-direction:column;
-
 align-items:center;
-
 `
 
 export const CardLembrete =styled.div`
@@ -75,7 +70,7 @@ display:flex;
 justify-content:space-evenly;
 flex-wrap:wrap;
 align-items:center;
-width:80%;
+width:400px;
 border:2px solid black;
 border-radius: 10px;
 background: linear-gradient(207deg, rgba(0,239,255,0.4759725400457666) 0%, rgba(0,78,103,0.6178489702517163) 51%, rgba(0,52,161,0.437070938215103) 100%);
@@ -112,7 +107,7 @@ font-family: 'Roboto';
 
 export const BotaoDeletar =styled.button`
 padding:4px 8px;
-position:absolute;
+position:relative;
 margin-left:50%;
 border-style: none;
 border: 0.5px solid black;
@@ -123,11 +118,10 @@ font-weight:bold;
 &:hover{
     cursor:pointer;
 }
-@media screen and (min-width:1100px){
-    position:relative;
     margin-right:30px;
     margin-left:30%;
-}
-
 `
-
+export const TitleDataLembrete =styled.span`
+font-weight:bold;
+font-family: 'Roboto';
+`
